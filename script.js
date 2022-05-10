@@ -7,6 +7,11 @@ const carbohydrate = document.getElementsByClassName('carbohydrate');
 const fat = document.getElementsByClassName('fat');
 const energy = document.getElementsByClassName('energy');
 
+// let isSubmitDisabled = true;
+// if(document.getElementById('ingredientName').value != data[0].ingredientName) {
+//     isSubmitDisabled = false;
+// }
+
 let ingredients = [];
 let proteinAmounts = [];
 let carbohydrateAmounts = [];
@@ -47,11 +52,16 @@ form.addEventListener("submit", (e) => {
 
 fetch('values.json')
   .then(response => response.json())
-  .then( data => appendData(data))
+  .then( data => presentData(data))
   .catch( err => console.log(err));
 
-function appendData(data) {
-    // let ing = document.getElementById('ingredientName').value;
+function presentData(data) {
     console.log(data);
-    document.getElementById('proteinAmount').value = data.testIngredient2.protein;
+    document.getElementById('ingredientName').value = data[1].ingredientName;
+    document.getElementById('proteinAmount').value = data[1].protein;
+    document.getElementById('carbohydrateAmount').value = data[1].carbohydrate;
+    document.getElementById('fatAmount').value = data[1].fat;
+    document.getElementById('energyAmount').value = data[1].energy;
+
+    // document.getElementById('proteinAmount').value = data[1].protein;
 }
