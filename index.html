@@ -9,36 +9,68 @@
     <!-- /<button class="btn btn-primary" onclick="generateHTML()">Generate</button> -->
 
     <div class="newItemForm">
-        <form id="form" onsubmit="addNewRow();" target="#"> 
-            <label for="name">Name</label>
-            <input type="text" id="ingredientName" placeholder="Write the name of the food.." value="abcd"> <br> <br>
-            <label for="protein">Protein</label>
-            <input type="text" id="proteinAmount" placeholder="Protein content" value="12"> <br> <br>
-            <label for="carbohydrate">Carbohydrate</label>
-            <input type="text" id="carbohydrateAmount" placeholder="Carbohydrate content" value="23"> <br> <br>
-            <label for="fat">Fat</label>
-            <input type="text" id="fatAmount" placeholder="Fat content" value="34"> <br> <br>
-            <label for="energy">Energy</label>
-            <input type="text" id="energyAmount" placeholder="Energy content" value="45"> <br> <br>
-            <button class="btn btn-secondary" type="submit">
-                + new ingredient
+        <form id="form" target="#"> 
+            <div class="row">
+                <div class="container-fluid col-sm-5 m-2 p-5">
+                    <table id="valueInputForm">
+                        <tr>
+                            <td class="fields"> <label for="name">Name</label> </td>
+                            <td class="fields"> <input type="text" id="ingredientName" placeholder="Write the name of the food.." value="abcd"> </td>
+                        </tr>
+                        <tr>
+                            <td class="fields"> <label for="amount">Amount</label> </td>
+                            <td class="fields"> <input type="number" name="amount" id="amount" value="100"> </td>
+                        </tr>
+                    </table>
+                    <button class="btn btn-dark mt-5" id="calculate">Calculate</button>
+                </div>
+                <div class="container-fluid col-sm-5 ml-1 p-3" id="fetchedItemsViewer">
+                    <table id="valueFetchedForm">
+                        <tr>
+                            <td class="fields"> <label for="protein">Protein</label> </td>
+                            <td class="fields"> <input type="text" id="proteinAmount" placeholder="Protein content" value="12"> </td>
+                        </tr>
+                        <tr>
+                            <td class="fields"> <label for="carbohydrate">Carbohydrate</label> </td>
+                            <td class="fields"> <input type="text" id="carbohydrateAmount" placeholder="Carbohydrate content" value="23"> </td>
+                        </tr>
+                        <tr>
+                            <td class="fields"> <label for="fat">Fat</label> </td>
+                            <td class="fields"> <input type="text" id="fatAmount" placeholder="Fat content" value="34"> </td>
+                        </tr>
+                        <tr>
+                            <td class="fields"> <label for="energy">Energy</label> </td>
+                            <td class="fields"> <input type="text" id="energyAmount" placeholder="Energy content" value="45"> </td>
+                        </tr>                    
+                    </table>
+                </div>
+            </div>
+
+            <button class="btn btn-success" id="addToTableButton" onclick="addNewRow();" type="submit">
+                Add to table
             </button>
+            
         </form>
     </div>
+    <br>
+    <div class="container">
+        <div>
+            <table class="table" id="tableView" style="display: none;">
+                <!-- <thead>
+                    <th class="row">
+                        <td class="col-sm-5">Ingredient Name</td>
+                        <td class="col-sm-3">Amount</td>
+                        <td class="col-sm-1">Protein</td>
+                        <td class="col-sm-1">Carbohydrate</td>
+                        <td class="col-sm-1">Fat</td>
+                        <td class="col-sm-1">Energy</td>
+                    </th>
+                </thead> -->
+                <tbody id="table">
 
-    <div>
-        <table class="table" id="tableView" style="display: none;">
-            <thead>
-                <td>Ingredient Name</td>
-                <td>Protein</td>
-                <td>Carbohydrate</td>
-                <td>Fat</td>
-                <td>Energy</td>
-            </thead>
-            <tbody id="table">
-
-            </tbody>
-        </table>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script src="script.js"></script>

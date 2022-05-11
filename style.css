@@ -1,5 +1,48 @@
 .newItemForm {
     background-color: #80ffd444;
-    margin: 10px;
-    padding: 20px;
+    border-radius: 1.2rem;
+    /* margin: 10px;
+    padding: 20px; */
+}
+
+.col-sm-2 {
+    padding: auto 4px;
+}
+
+.table>input {
+    width: fit-content;
+}
+
+.ingredient {
+    background-color: darkturquoise;
+}
+
+.amountTaken {
+    background-color: blanchedalmond;
+}
+
+.fields{
+    height: 50px;
+    padding-right: 25px;
+    /* margin: 33px; */
+}
+
+
+#addToTableButton {
+    width: 100%;
+}
+
+.container-fluid {
+    margin: auto;
+}
+
+#valueFetchedForm {
+    font-style: italic;
+    font-weight: bold;
+    background-color: khaki;
+    border-radius: 0.5rem;
+}
+
+#valueFetchedForm>tbody>tr>.fields {
+    padding-left: 10px;
 }
