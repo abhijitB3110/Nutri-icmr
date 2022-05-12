@@ -11,20 +11,27 @@
     <div class="newItemForm">
         <form id="form" target="#"> 
             <div class="row">
-                <div class="container-fluid col-sm-5 m-2 p-5">
+                <div class="container-fluid col-sm-12 col-lg-6 p-5">
                     <table id="valueInputForm">
                         <tr>
-                            <td class="fields"> <label for="name">Name</label> </td>
-                            <td class="fields"> <input type="text" id="ingredientName" placeholder="Write the name of the food.." value="abcd"> </td>
+                            <td class="fields"> <label for="time">Time of day</label> </td>
+                            <td class="fields"> <input type="text" id="time" placeholder="e.g.- Morning / 08:00AM"> </td>
+                        </tr>
+                        <tr>
+                            <td class="fields"> <label for="recipeName">Name of recipe</label> </td>
+                            <td class="fields"> <input type="text" id="recipeName" placeholder="e.g.- Paneer curry"> </td>
+                        </tr>
+                        <tr>
+                            <td class="fields"> <label for="ingredientName">Name *</label> </td>
+                            <td class="fields"> <input type="text" id="ingredientName" placeholder="Ingredient name.." value="abcd" required> </td>
                         </tr>
                         <tr>
                             <td class="fields"> <label for="amount">Amount</label> </td>
-                            <td class="fields"> <input type="number" name="amount" id="amount" value="100"> </td>
+                            <td class="fields"> <input type="" name="amount" id="amount" value="100" required> </td>
                         </tr>
                     </table>
-                    <button class="btn btn-dark mt-5" id="calculate">Calculate</button>
                 </div>
-                <div class="container-fluid col-sm-5 ml-1 p-3" id="fetchedItemsViewer">
+                <div class="container-fluid col-sm-12 col-lg-6 p-5" id="fetchedItemsViewer">
                     <table id="valueFetchedForm">
                         <tr>
                             <td class="fields"> <label for="protein">Protein</label> </td>
