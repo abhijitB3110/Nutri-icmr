@@ -1,24 +1,5 @@
-.newItemForm {
-    background-color: #80ffd444;
-    border-radius: 1.2rem;
-    /* margin: 10px;
-    padding: 20px; */
-}
-
-.col-sm-2 {
-    padding: auto 4px;
-}
-
-.table>input {
-    width: fit-content;
-}
-
-.ingredient {
-    background-color: darkturquoise;
-}
-
-.amountTaken {
-    background-color: blanchedalmond;
+body {
+    min-width: fit-content;
 }
 
 .fields{
@@ -45,4 +26,43 @@
 
 #valueFetchedForm>tbody>tr>.fields {
     padding-left: 10px;
+}
+
+#valueInputForm>input, #valueFetchedForm>input, table {
+    min-width: fit-content;
+}
+
+
+.newItemForm {
+    background-color: rgba(200, 221, 125, 0.671);
+    border-radius: 0.6rem;
+}
+
+
+.timeScheduled {
+    background-color: lightgoldenrodyellow;
+    color: purple;
+    font-weight: 700;
+}
+
+.recipeGiven {
+    background-color: teal;
+    color: yellow;
+    font-weight: 600;
+}
+
+.ingredient {
+    background-color: rgb(80, 0, 209);
+    color: springgreen;
+    font-weight: 500;
+}
+
+.amountTaken {
+    background-color: blanchedalmond;
+}
+
+
+.newIngredient {
+    background-color: rgba(0, 255, 128, 0.342);
+    border-radius: 0.6rem;
 }
