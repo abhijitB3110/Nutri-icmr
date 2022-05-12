@@ -9,6 +9,8 @@ const fat = document.getElementsByClassName('fat');
 const energy = document.getElementsByClassName('energy');
 const amount = document.getElementById('amount');
 
+const time = document.getElementById('time');
+const recipeName = document.getElementById('recipeName');
 const ingredientNameField = document.getElementById('ingredientName');
 const proteinField = document.getElementById('proteinAmount');
 const carbohydrateField = document.getElementById('carbohydrateAmount');;
@@ -46,6 +48,8 @@ function addNewRow() {
 
 form.addEventListener("submit", (e) => {
     e.preventDefault();
+    time.value = null;
+    recipeName.value = null;
     document.getElementById('tableView').style.display = null;
     for(var i=0; i<inserts; i++) {
         ingredient[i].value = ingredients[i];
