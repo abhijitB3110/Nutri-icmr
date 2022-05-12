@@ -15,11 +15,6 @@ const carbohydrateField = document.getElementById('carbohydrateAmount');;
 const fatField = document.getElementById('fatAmount');
 const energyField = document.getElementById('energyAmount');
 
-// let isSubmitDisabled = true;
-// if(document.getElementById('ingredientName').value != data[0].ingredientName) {
-//     isSubmitDisabled = false;
-// }
-
 let ingredients = [];
 let amountTakens = [];
 let proteinAmounts = [];
@@ -74,20 +69,11 @@ function presentData(data) {
     carbohydrateField.value = data[1].carbohydrate;
     fatField.value = data[1].fat;
     energyField.value = data[1].energy;
-}
 
-// document.getElementById('calculate').addEventListener('click', (e, data) => {
-//     ingredientNameField.value = data[1].ingredientName;
-//     proteinField.value = data[1].protein * (amount.value / 100);
-//     carbohydrateField.value = data[1].carbohydrate * (amount.value / 100);
-//     fatField.value = data[1].fat * (amount.value / 100);
-//     energyField.value = data[1].energy * (amount.value / 100);
-// });
-
-function calculateValues(data) {
-    ingredientNameField.value = data[1].ingredientName;
-    proteinField.value = data[1].protein * (amount.value / 100);
-    carbohydrateField.value = data[1].carbohydrate * (amount.value / 100);
-    fatField.value = data[1].fat * (amount.value / 100);
-    energyField.value = data[1].energy * (amount.value / 100);
+    document.getElementById('amount').addEventListener('input', (e) => {
+        proteinField.value = (data[1].protein * (amount.value / 100)).toFixed(3);
+        carbohydrateField.value = (data[1].carbohydrate * (amount.value / 100)).toFixed(3);
+        fatField.value = (data[1].fat * (amount.value / 100)).toFixed(3);
+        energyField.value = (data[1].energy * (amount.value / 100)).toFixed(3);
+    });
 }
