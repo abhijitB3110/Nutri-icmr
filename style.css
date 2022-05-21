@@ -8,6 +8,9 @@ body {
     /* margin: 33px; */
 }
 
+#dropdownHolder {
+    text-align: center;
+}
 
 #addToTableButton {
     width: 100%;

@@ -1,5 +1,6 @@
 const body = document.getElementById('body');
 const form = document.getElementById('form');
+const ingredientSelect = document.getElementById('ingredientSelect');
 const table = document.getElementById('table');
 const timeScheduled = document.getElementsByClassName('timeScheduled');
 const recipeGiven = document.getElementsByClassName('recipeGiven')
@@ -55,6 +56,7 @@ function addNewRow() {
 }
 
 form.addEventListener("submit", (e) => {
+    addNewRow();
     e.preventDefault();
     time.value = null;
     recipeName.value = null;
@@ -78,17 +80,30 @@ fetch('values.json')
   .catch( err => console.log(err));
 
 function presentData(data) {
-    console.log(data);
-    ingredientNameField.value = data[1].ingredientName;
-    proteinField.value = data[1].protein;
-    carbohydrateField.value = data[1].carbohydrate;
-    fatField.value = data[1].fat;
-    energyField.value = data[1].energy;
+    
+    for (var op in data) {
+        ingredientSelect.innerHTML += '<option value="' + String(op) + '">' + op + '</option>';
+    }
+
+    ingredientName.value = ingredientSelect.value;
+        proteinField.value = data[ingredientSelect.value].protein.toFixed(3);
+        carbohydrateField.value = data[ingredientSelect.value].carbohydrate.toFixed(3);
+        fatField.value = data[ingredientSelect.value].fat.toFixed(3);
+        energyField.value = data[ingredientSelect.value].energy.toFixed(3);
+
+    document.getElementById('generate').onclick = function() {
+        ingredientName.value = ingredientSelect.value;
+        proteinField.value = data[ingredientSelect.value].protein.toFixed(3);
+        carbohydrateField.value = data[ingredientSelect.value].carbohydrate.toFixed(3);
+        fatField.value = data[ingredientSelect.value].fat.toFixed(3);
+        energyField.value = data[ingredientSelect.value].energy.toFixed(3);
+        
+    }
 
     document.getElementById('amount').addEventListener('input', (e) => {
-        proteinField.value = (data[1].protein * (amount.value / 100)).toFixed(3);
-        carbohydrateField.value = (data[1].carbohydrate * (amount.value / 100)).toFixed(3);
-        fatField.value = (data[1].fat * (amount.value / 100)).toFixed(3);
-        energyField.value = (data[1].energy * (amount.value / 100)).toFixed(3);
+        proteinField.value = (data[ingredientSelect.value].protein * (amount.value / 100)).toFixed(3);
+        carbohydrateField.value = (data[ingredientSelect.value].carbohydrate * (amount.value / 100)).toFixed(3);
+        fatField.value = (data[ingredientSelect.value].fat * (amount.value / 100)).toFixed(3);
+        energyField.value = (data[ingredientSelect.value].energy * (amount.value / 100)).toFixed(3);
     });
 }

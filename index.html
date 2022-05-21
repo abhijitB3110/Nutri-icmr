@@ -6,12 +6,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body class="m-5" id="body">
-    <!-- /<button class="btn btn-primary" onclick="generateHTML()">Generate</button> -->
-
     <div id="newItemForm" class="m-4">
+        <div class="pt-5" id="dropdownHolder">
+            <select name="ingredientSelect" id="ingredientSelect" required></select> <br><br>
+            <button class="btn btn-warning" id="generate">Generate</button> 
+        </div>
         <form id="form" target="#"> 
             <div class="row">
-                <div class="container col-sm-12 col-lg-6 p-5">
+                <div class="container col-m-12 col-lg-6 p-5">
                     <table id="valueInputForm">
                         <tr>
                             <td class="fields"> <label for="time">Time of day</label> </td>
@@ -23,7 +25,7 @@
                         </tr>
                         <tr>
                             <td class="fields"> <label for="ingredientName">Name *</label> </td>
-                            <td class="fields"> <input type="text" id="ingredientName" placeholder="Ingredient name.." value="abcd" required> </td>
+                            <td class="fields"> <input type="text" id="ingredientName" placeholder="Ingredient name" required> </td>
                         </tr>
                         <tr>
                             <td class="fields"> <label for="amount">Amount</label> </td>
@@ -35,28 +37,26 @@
                     <table id="valueFetchedForm">
                         <tr>
                             <td class="fields"> <label for="protein">Protein</label> </td>
-                            <td class="fields"> <input type="text" id="proteinAmount" placeholder="Protein content" value="12"> </td>
+                            <td class="fields"> <input type="text" id="proteinAmount" placeholder="Protein content" disabled> </td>
                         </tr>
                         <tr>
                             <td class="fields"> <label for="carbohydrate">Carbohydrate</label> </td>
-                            <td class="fields"> <input type="text" id="carbohydrateAmount" placeholder="Carbohydrate content" value="23"> </td>
+                            <td class="fields"> <input type="text" id="carbohydrateAmount" placeholder="Carbohydrate content" disabled> </td>
                         </tr>
                         <tr>
                             <td class="fields"> <label for="fat">Fat</label> </td>
-                            <td class="fields"> <input type="text" id="fatAmount" placeholder="Fat content" value="34"> </td>
+                            <td class="fields"> <input type="text" id="fatAmount" placeholder="Fat content" disabled> </td>
                         </tr>
                         <tr>
                             <td class="fields"> <label for="energy">Energy</label> </td>
-                            <td class="fields"> <input type="text" id="energyAmount" placeholder="Energy content" value="45"> </td>
+                            <td class="fields"> <input type="text" id="energyAmount" placeholder="Energy content" disabled> </td>
                         </tr>                    
                     </table>
                 </div>
             </div>
-
-            <button class="btn btn-success" id="addToTableButton" onclick="addNewRow();" type="submit">
+            <button class="btn btn-success" id="addToTableButton" type="submit">
                 Add to table
             </button>
-            
         </form>
     </div>
     <br>

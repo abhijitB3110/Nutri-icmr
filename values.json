@@ -1,23 +1,24 @@
-[
-    {
+{
+    "Select an ingredient form dropdown": {
         "ingredientName": "Select an ingredient form dropdown",
         "protein" : 0.0,
         "carbohydrate": 0.0,
         "fat": 0.0,
         "energy": 0.0
     },
-    {
+
+    "khabar1": {
         "ingredientName": "khabar1",
         "protein" : 1.2,
         "carbohydrate": 2.3,
         "fat": 3.4,
         "energy": 4.5
     },
-    {
+    "khabar2": {
         "ingredientName": "khabar2",
         "protein" : 11.2,
         "carbohydrate": 22.3,
         "fat": 33.4,
         "energy": 44.5
     }
-]
+}
