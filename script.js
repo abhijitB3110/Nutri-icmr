@@ -86,6 +86,7 @@ function presentData(data) {
     }
 
         ingredientName.value = ingredientSelect.value;
+        amount.value = 100;
         proteinField.value = data[ingredientSelect.value].protein.toFixed(3);
         carbohydrateField.value = data[ingredientSelect.value].carbohydrate.toFixed(3);
         fatField.value = data[ingredientSelect.value].fat.toFixed(3);
@@ -93,7 +94,7 @@ function presentData(data) {
 
     document.getElementById('generate').onclick = function() {
         ingredientName.value = ingredientSelect.value;
-        amountTaken.value = 100;
+        amount.value = 100;
         proteinField.value = data[ingredientSelect.value].protein.toFixed(3);
         carbohydrateField.value = data[ingredientSelect.value].carbohydrate.toFixed(3);
         fatField.value = data[ingredientSelect.value].fat.toFixed(3);
