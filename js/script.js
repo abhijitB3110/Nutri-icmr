@@ -72,7 +72,6 @@ function addNewRow() {
 document.getElementById('addToTableButton').addEventListener("click", (e) => {
     if(ingredientNameField.value !== '') {
         addNewRow();
-        e.preventDefault();
         time.value = null;
         recipeName.value = null;
         document.getElementById('tableView').style.display = null;
@@ -102,13 +101,6 @@ document.getElementById('addToTableButton').addEventListener("click", (e) => {
                 energy[i].value = '-';
             else
                 energy[i].value = energyAmounts[i];
-
-            
-
-
-            // carbohydrate[i].value = carbohydrateAmounts[i];
-            // fat[i].value = fatAmounts[i];
-            // energy[i].value = energyAmounts[i];
         }
     }
 });
@@ -118,22 +110,58 @@ const EXCEL_EXTENSION = '.xlsx';
 
 document.getElementById('download').addEventListener('click', (e) => {
     let jsonData = []
+    let totalProtein = 0
+    let totalFat = 0
+    let totalCarbohydrate = 0
+    let totalEnergy = 0
     for(var i=0; i<inserts; i++) {
+        if(protein[i].value === '-') {
+            totalProtein += 0
+        } else {
+            totalProtein += (parseFloat(protein[i].value));
+        }
+        if(fat[i].value === '-') {
+            totalFat += 0
+        } else {
+            totalFat += parseFloat(fat[i].value);
+        }
+        if(carbohydrate[i].value === '-') {
+            totalCarbohydrate += 0
+        } else {
+            totalCarbohydrate += parseFloat(carbohydrate[i].value);
+        }
+        if(energy[i].value === '-') {
+            totalEnergy += 0
+        } else {
+            totalEnergy += parseFloat(energy[i].value);
+        }
         var entry = {
             "Timing": timeScheduled[i].value,
             "Menu": recipeGiven[i].value,
             "Ingredients": ingredient[i].value,
-            "Amount": amountTaken[i].value,
-            "Protein": protein[i].value,
-            "Fat": fat[i].value,
-            "Carbohydrate": carbohydrate[i].value,
-            "Energy": energy[i].value
+            "Amount(g/ml)": amountTaken[i].value,
+            "Protein(g)": protein[i].value,
+            "Fat(g)": fat[i].value,
+            "Carbohydrate(g)": carbohydrate[i].value,
+            "Energy(g)": energy[i].value
 
         }
         jsonData.push(entry)
     }
-    // console.log(jsonData)
+    var totals = {
+        "Timing": 'Total',
+        "Menu": '',
+        "Ingredients": '',
+        "Amount(g/ml)": '',
+        "Protein(g)": totalProtein,
+        "Fat(g)": totalFat,
+        "Carbohydrate(g)": totalCarbohydrate,
+        "Energy(g)": totalEnergy
+    }
+    jsonData.push(totals)
     downloadAsExcel(jsonData)
+    filename.value = ''
+    document.getElementById('download').disabled = true;
 })
 
 function downloadAsExcel(jsonData) {
@@ -164,13 +192,6 @@ function presentData(data) {
     for (var op = 0; op < data.length; op++) {
         ingredientSelect.innerHTML += '<option value=' + op + '>' + data[op].ingredientName + '</option>';
     }
-
-        // ingredientName.value = data[ingredientSelect.value].ingredientName;
-        // amount.value = 100;
-        // proteinField.value = data[ingredientSelect.value].protein;
-        // carbohydrateField.value = data[ingredientSelect.value].carbohydrate;
-        // fatField.value = data[ingredientSelect.value].fat;
-        // energyField.value = data[ingredientSelect.value].energy;
 
     document.getElementById('ingredientSelect').addEventListener('change', function() {
         ingredientName.value =  data[ingredientSelect.value].ingredientName;
