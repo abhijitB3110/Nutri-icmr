@@ -71,14 +71,23 @@ function addNewRow() {
     inserts++;
 }
 
+function nullifyValues() {
+    time.value = null;
+    recipeName.value = null;
+    ingredientNameField.value = null;
+    proteinField.value = null;
+    fatField.value = null;
+    carbohydrateField.value = null;
+    energyField.value = null;
+    amount.value = 100;
+}
+
 document.getElementById('addToTableButton').addEventListener("click", (e) => {
-    if(ingredientNameField.value !== '') {
+    if(ingredientNameField.value !== '' && proteinField.value !== '' && fatField.value !== '' && carbohydrateField.value !== '' && energyField.value !== '' && amount.value !== '') {
         addNewRow();
-        time.value = null;
-        recipeName.value = null;
         document.getElementById('tableView').style.display = null;
         document.getElementById('downloadOptions').style.display = null;
-        ingredientNameField.value = null;
+        nullifyValues();
         for(var i=0; i<inserts; i++) {
             timeScheduled[i].value = times[i];
             recipeGiven[i].value = recipeNames[i];
@@ -205,14 +214,47 @@ function presentData(data) {
     })
 
     document.getElementById('amount').addEventListener('input', (e) => {
-        proteinField.value = Math.round((data[ingredientSelect.value].protein * (amount.value / 100)) * 100 ) / 100;
-        carbohydrateField.value = Math.round((data[ingredientSelect.value].carbohydrate * (amount.value / 100)) * 100 ) / 100;
-        fatField.value = Math.round((data[ingredientSelect.value].fat * (amount.value / 100)) * 100 ) / 100;
-        energyField.value = Math.round((data[ingredientSelect.value].energy * (amount.value / 100)) * 100 ) / 100;
-        
+
+        if(document.getElementById('editValues').disabled !== true){
+            proteinField.value = Math.round((data[ingredientSelect.value].protein * (amount.value / 100)) * 100 ) / 100;
+            carbohydrateField.value = Math.round((data[ingredientSelect.value].carbohydrate * (amount.value / 100)) * 100 ) / 100;
+            fatField.value = Math.round((data[ingredientSelect.value].fat * (amount.value / 100)) * 100 ) / 100;
+            energyField.value = Math.round((data[ingredientSelect.value].energy * (amount.value / 100)) * 100 ) / 100;
+        }
     });
 }
 
 filename.addEventListener('input', (e) => {
     document.getElementById('download').disabled = (filename.value === '');
+    document.getElementById('filenameWarning').style.display = ((filename.value === '') ? null : 'none');
 })
+
+document.getElementById('editValues').addEventListener('click', e => {
+    time.disabled = true;
+    recipeName.disabled = true;
+    ingredientSelect.disabled = true;
+    ingredientName.disabled = false;
+    proteinField.disabled = false;
+    carbohydrateField.disabled = false;
+    fatField.disabled = false;
+    energyField.disabled = false;
+    document.getElementById('addToTableButton').disabled = true;
+    document.getElementById('editValues').style.width = '80%';
+    document.getElementById('editValues').disabled = true;
+    document.getElementById('saveEditedValues').style.display = null;
+});
+
+document.getElementById('saveEditedValues').addEventListener('click', e => {
+    time.disabled = false;
+    recipeName.disabled = false;
+    ingredientSelect.disabled = false;
+    ingredientName.disabled = true;
+    proteinField.disabled = true;
+    carbohydrateField.disabled = true;
+    fatField.disabled = true;
+    energyField.disabled = true;
+    document.getElementById('addToTableButton').disabled = false;    
+    document.getElementById('editValues').style.width = '100%';
+    document.getElementById('editValues').disabled = false;
+    document.getElementById('saveEditedValues').style.display = 'none';
+});

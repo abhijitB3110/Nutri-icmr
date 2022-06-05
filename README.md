@@ -2,6 +2,5 @@
 
 ### Next works to be done:
 
-1. checkbox
+1. infos
 2. enable/disable button
-3.
