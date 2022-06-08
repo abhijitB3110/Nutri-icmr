@@ -151,10 +151,10 @@ document.getElementById('download').addEventListener('click', (e) => {
             "Menu": recipeGiven[i].value,
             "Ingredients": ingredient[i].value,
             "Amount(g/ml)": amountTaken[i].value,
-            "Protein(g)": protein[i].value,
-            "Fat(g)": fat[i].value,
-            "Carbohydrate(g)": carbohydrate[i].value,
-            "Energy(g)": energy[i].value
+            "Protein(g)": (protein[i].value == '-') ? '-' : parseFloat(protein[i].value),
+            "Fat(g)": (fat[i].value == '-') ? '-' : parseFloat(fat[i].value),
+            "Carbohydrate(g)": (carbohydrate[i].value == '-') ? '-' : parseFloat(carbohydrate[i].value),
+            "Energy(g)": (energy[i].value.trim() == '-') ? '-' : parseFloat(energy[i].value)
 
         }
         jsonData.push(entry)
