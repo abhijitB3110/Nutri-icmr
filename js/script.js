@@ -40,14 +40,14 @@ function addNewRow() {
                     
             // table.innerHTML +='<tr class="row newIngredient"><td class="col-sm-2"><input type="text" class="timeScheduled col-sm-12" value="'+time.value+'"></td><td class="col-sm-2"><input type="text" class="recipeGiven col-sm-12" value="'+recipeName.value+'">< td><td class="col-sm-2"><input type="text" class="ingredient col-sm-12" value="'+ ingredientNameField.value+ '"></td><td class="col-sm-2"><input type="text" class="amountTaken col-sm-12" value="'+ amount.value+'">< td><td class="col-sm-1"><input type="number" class="protein col-sm-12" value="'+ proteinField.value+'>"< td><td class="col-sm-1"><input type="text" class="fat col-sm-12" value="'+fatField.value+'">< td><td class="col-sm-1"><input type="text" class="carbohydrate col-sm-12" value="'+carbohydrateField.value+'">< td><td class="col-sm-1"><input type="text" class="energy col-sm-12" value="'+energyField.value+'">< td></tr>';
                     
-    times[inserts] = time.value;
-    recipeNames[inserts] = recipeName.value;
-    ingredients[inserts] = ingredientNameField.value;
-    amountTakens[inserts] = amount.value;
-    proteinAmounts[inserts] = proteinField.value;
-    fatAmounts[inserts] = fatField.value;
-    carbohydrateAmounts[inserts] = carbohydrateField.value;
-    energyAmounts[inserts] = energyField.value;
+    times[inserts] = time.value.trim();
+    recipeNames[inserts] = recipeName.value.trim();
+    ingredients[inserts] = ingredientNameField.value.trim();
+    amountTakens[inserts] = amount.value.trim();
+    proteinAmounts[inserts] = proteinField.value.trim();
+    fatAmounts[inserts] = fatField.value.trim();
+    carbohydrateAmounts[inserts] = carbohydrateField.value.trim();
+    energyAmounts[inserts] = energyField.value.trim();
 
     timeScheduled[inserts].value = times[inserts];
     recipeGiven[inserts].value = recipeNames[inserts];
@@ -154,7 +154,7 @@ document.getElementById('download').addEventListener('click', (e) => {
             "Protein(g)": (protein[i].value == '-') ? '-' : parseFloat(protein[i].value),
             "Fat(g)": (fat[i].value == '-') ? '-' : parseFloat(fat[i].value),
             "Carbohydrate(g)": (carbohydrate[i].value == '-') ? '-' : parseFloat(carbohydrate[i].value),
-            "Energy(g)": (energy[i].value.trim() == '-') ? '-' : parseFloat(energy[i].value)
+            "Energy(g)": (energy[i].value == '-') ? '-' : parseFloat(energy[i].value)
 
         }
         jsonData.push(entry)
