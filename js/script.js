@@ -173,6 +173,7 @@ document.getElementById('download').addEventListener('click', (e) => {
     downloadAsExcel(jsonData)
     filename.value = ''
     document.getElementById('download').disabled = true;
+    document.getElementById('filenameWarning').style.display = null;
 })
 
 function downloadAsExcel(jsonData) {
@@ -245,16 +246,21 @@ document.getElementById('editValues').addEventListener('click', e => {
 });
 
 document.getElementById('saveEditedValues').addEventListener('click', e => {
-    time.disabled = false;
-    recipeName.disabled = false;
-    ingredientSelect.disabled = false;
-    ingredientName.disabled = true;
-    proteinField.disabled = true;
-    carbohydrateField.disabled = true;
-    fatField.disabled = true;
-    energyField.disabled = true;
-    document.getElementById('addToTableButton').disabled = false;    
-    document.getElementById('editValues').style.width = '100%';
-    document.getElementById('editValues').disabled = false;
-    document.getElementById('saveEditedValues').style.display = 'none';
+    if(!(isNaN(parseFloat(proteinField.value)) || isNaN(parseFloat(fatField.value)) || isNaN(parseFloat(carbohydrateField.value)) || isNaN(parseFloat(energyField.value)))) {    
+        time.disabled = false;
+        recipeName.disabled = false;
+        ingredientSelect.disabled = false;
+        ingredientName.disabled = true;
+        proteinField.disabled = true;
+        carbohydrateField.disabled = true;
+        fatField.disabled = true;
+        energyField.disabled = true;
+        document.getElementById('addToTableButton').disabled = false;    
+        document.getElementById('editValues').style.width = '100%';
+        document.getElementById('editValues').disabled = false;
+        document.getElementById('saveEditedValues').style.display = 'none';
+        document.getElementById('editWarning').style.display = 'none';
+    } else {
+        document.getElementById('editWarning').style.display = null;
+    }
 });

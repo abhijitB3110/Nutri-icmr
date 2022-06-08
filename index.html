@@ -21,19 +21,19 @@
                 <div class="container col-sm-12 col-lg-6 p-5">
                     <table id="valueInputForm">
                         <tr>
-                            <td class="fields"> <label for="time">Time of day</label> </td>
+                            <td class="fields"> <label for="time">Timing</label> </td>
                             <td class="fields"> <input type="text" id="time" placeholder="e.g.- Morning / 08:00AM"> </td>
                         </tr>
                         <tr>
-                            <td class="fields"> <label for="recipeName">Name of recipe</label> </td>
+                            <td class="fields"> <label for="recipeName">Menu</label> </td>
                             <td class="fields"> <input type="text" id="recipeName" placeholder="e.g.- Paneer curry"> </td>
                         </tr>
                         <tr>
-                            <td class="fields"> <label for="ingredientName">Name *</label> </td>
+                            <td class="fields"> <label for="ingredientName">Ingredient</label> </td>
                             <td class="fields"> <select name="ingredientSelect" id="ingredientSelect" required></select> </td>
                         </tr>
                         <tr>
-                            <td class="fields"> <label for="amount">Amount</label> </td>
+                            <td class="fields"> <label for="amount">Amount (g/ml)</label> </td>
                             <td class="fields"> <input type="" name="amount" id="amount" value="100" required> </td>
                         </tr>
                     </table>
@@ -41,49 +41,51 @@
                 <div class="container col-sm-12 col-lg-6 p-5" id="fetchedItemsViewer">
                     <table id="valueFetchedForm">
                         <tr>
-                            <td class="fields"> <label for="ingredientName">Name *</label> </td>
+                            <td class="fields"> <label for="ingredientName">Ingredient</label> </td>
                             <td class="fields"> <input type="text" id="ingredientName" placeholder="Ingredient name" required disabled> </td>
                         </tr>
                         <tr>
-                            <td class="fields"> <label for="protein">Protein</label> </td>
+                            <td class="fields"> <label for="protein">Protein (g)</label> </td>
                             <td class="fields"> <input type="text" id="proteinAmount" placeholder="0.0" required disabled> </td>
                         </tr>
                         <tr>
-                            <td class="fields"> <label for="fat">Fat</label> </td>
+                            <td class="fields"> <label for="fat">Fat (g)</label> </td>
                             <td class="fields"> <input type="text" id="fatAmount" placeholder="0.0" required disabled> </td>
                         </tr>
                         <tr>
-                            <td class="fields"> <label for="carbohydrate">Carbohydrate</label> </td>
+                            <td class="fields"> <label for="carbohydrate">Carbohydrate (g)</label> </td>
                             <td class="fields"> <input type="text" id="carbohydrateAmount" placeholder="0.0" required disabled> </td>
                         </tr>
                         <tr>
-                            <td class="fields"> <label for="energy">Energy</label> </td>
+                            <td class="fields"> <label for="energy">Energy (g)</label> </td>
                             <td class="fields"> <input type="text" id="energyAmount" placeholder="0.0" required disabled> </td>
                         </tr>
                         <tr>
                             <td><button class="btn btn-warning m-3" id="editValues" style="margin: 20%; width: 100%; box-shadow: none;">Edit values</button></td>
                             <td><button class="btn btn-success m-3" id="saveEditedValues" style="margin:20%; width: 50%; box-shadow: none; display: none;">Save</button></td>
-                        </tr>
+                        </tr>                        
                     </table>
+                    <div class="text-danger" id="editWarning" style="margin-left: 20%; display: none;">* Put all numeric values correctly <br> * put 0 in place of  '-'</div>
                 </div>
             </div>
             <button class="btn btn-success" id="addToTableButton">
                 Add to table
             </button>
+            
     </div>
     <br>
     <div class="container">
         <div>
             <table class="table" id="tableView" style="display: none;">
                     <tr class="row">
-                        <td class="col-sm-2">Timing</td>
-                        <td class="col-sm-2">Menu</td>
-                        <td class="col-sm-2">Ingredients</td>
-                        <td class="col-sm-2">Amount</td>
-                        <td class="col-sm-1">Protein</td>
-                        <td class="col-sm-1">Fat</td>
-                        <td class="col-sm-1">Carbohydrate</td>
-                        <td class="col-sm-1">Energy</td>
+                        <td class="col-sm-2" style="text-align: center;">Timing</td>
+                        <td class="col-sm-2" style="text-align: center;">Menu</td>
+                        <td class="col-sm-2" style="text-align: center;">Ingredients</td>
+                        <td class="col-sm-2" style="text-align: center;">Amount (g/ml)</td>
+                        <td class="col-sm-1" style="text-align: center;">Protein (g)</td>
+                        <td class="col-sm-1" style="text-align: center;">Fat (g)</td>
+                        <td class="col-sm-1" style="text-align: center;">Carbohydrate (g)</td>
+                        <td class="col-sm-1" style="text-align: center;">Energy (kcal)</td>
                     </tr>
                 <tbody id="table">
 
